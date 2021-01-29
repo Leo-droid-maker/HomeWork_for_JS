@@ -13,7 +13,7 @@ function countBasketPrice(arr) {
 
     let result = 0;
     for (i = 0; i < arr.length; i++) {
-        result += userBasket[i][1];
+        result += arr[i][1];
     }
     return result;
 }
