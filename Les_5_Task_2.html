@@ -18,41 +18,82 @@
     <script>
         "use strict";
 
-        const userBasket = {
-
-            namesOfGoods: [
-                { name: 'GraficCard MSI' },
-                { name: 'MotherBoard MSI' },
-                { name: 'RAM AMD 8GB' },
-                { name: 'CPU Intel i5 10400' },
-                { name: 'M2SSD256GBSATA Kingston' }
+        const Basket = {
+            goods: [
+                {
+                    id_product: 123,
+                    product_name: 'GraficCard MSI',
+                    price: 360,
+                    quantity: 1
+                },
+                {
+                    id_product: 456,
+                    product_name: 'MotherBoard MSI',
+                    price: 20,
+                    quantity: 1
+                },
+                {
+                    id_product: 234,
+                    product_name: 'RAM AMD 8GB',
+                    price: 30,
+                    quantity: 2
+                },
+                {
+                    id_product: 623,
+                    product_name: 'CPU Intel i5 10400',
+                    price: 230,
+                    quantity: 1
+                },
+                {
+                    id_product: 124,
+                    product_name: 'M2SSD256GBSATA Kingston',
+                    price: 60,
+                    quantity: 1
+                }
             ],
-
-            pricesOfGoods: [
-                { price: 360 },
-                { price: 20 },
-                { price: 30 },
-                { price: 230 },
-                { price: 60 }
-            ],
-
-            quantitysOfGoods: [
-                { quantity: 1 },
-                { quantity: 1 },
-                { quantity: 2 },
-                { quantity: 1 },
-                { quantity: 1 }
-            ],
-
             countBasketPrice() {
-                return this.pricesOfGoods.reduce((sum, res) => sum += res.price, 0);
-
+                return this.goods.reduce((totalPrice, cartItem) => totalPrice += cartItem.price, 0);
             },
-
             countBasketQuantity() {
-                return this.quantitysOfGoods.reduce((sum, res) => sum += res.quantity, 0);
+                return this.goods.reduce((totalQuantity, cartItem) => totalQuantity += cartItem.quantity, 0);
             }
         };
+
+        // const userBasket = {
+
+        //     namesOfGoods: [
+        //         { name: 'GraficCard MSI' },
+        //         { name: 'MotherBoard MSI' },
+        //         { name: 'RAM AMD 8GB' },
+        //         { name: 'CPU Intel i5 10400' },
+        //         { name: 'M2SSD256GBSATA Kingston' }
+        //     ],
+
+        //     pricesOfGoods: [
+        //         { price: 360 },
+        //         { price: 20 },
+        //         { price: 30 },
+        //         { price: 230 },
+        //         { price: 60 }
+        //     ],
+
+        //     quantitysOfGoods: [
+        //         { quantity: 1 },
+        //         { quantity: 1 },
+        //         { quantity: 2 },
+        //         { quantity: 1 },
+        //         { quantity: 1 }
+        //     ],
+
+        //     countBasketPrice() {
+        //         return this.pricesOfGoods.reduce((sum, res) => sum += res.price, 0);
+
+        //     },
+
+        //     countBasketQuantity() {
+        //         return this.quantitysOfGoods.reduce((sum, res) => sum += res.quantity, 0);
+        //     }
+        // };
 
         function userBasketResultSum(prc, qntt) {
             if (qntt == 0) return 'Basket is empty';
@@ -60,7 +101,7 @@
             return `There are ${qntt} products in your cart worth ${prc} USD`;
         }
 
-        let total = userBasketResultSum(userBasket.countBasketPrice(), userBasket.countBasketQuantity());
+        let total = userBasketResultSum(Basket.countBasketPrice(), Basket.countBasketQuantity());
         console.log(total);
 
 
