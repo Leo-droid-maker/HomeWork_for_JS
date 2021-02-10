@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            width: 20px;
+            height: 20px;
+        }
+
+        td {
+            border: 1px solid #888;
+            width: 20px;
+            height: 20px;
+        }
+
+        .td-black {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        function getChessBoard() {
+
+
+            let lettersForBoard = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            let numbersForBoard = ['', '8', '7', '6', '5', '4', '3', '2', '1'];
+            // document.querySelector('body').insertAdjacentHTML('beforeend', '<table><tr><td></td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td></tr></table>');
+
+
+
+            let tableTag = document.createElement('table');
+
+            let counter = 0;
+
+            for (let row = 0; row < 9; row++) {
+                let trTag = document.createElement('tr');
+                tableTag.appendChild(trTag);
+
+
+                for (let col = 0; col < 9; col++) {
+                    let tdTag = document.createElement('td');
+                    trTag.appendChild(tdTag);
+                    if (col == 0) {
+                        tdTag.textContent = numbersForBoard[row];
+                    }
+                    if (row == 0) {
+                        tdTag.textContent = lettersForBoard[col];
+                    }
+
+                    if (counter % 2 != 0 && !tdTag.textContent) tdTag.classList.add('td-black');
+                    counter += 1;
+                }
+            }
+
+            document.querySelector('body').appendChild(tableTag);
+        }
+
+        getChessBoard();
+
+    </script>
+</body>
+
+</html>
